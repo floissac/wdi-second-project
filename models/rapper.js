@@ -14,6 +14,7 @@ commentSchema.methods.belongsTo = function commentBelongsTo(user) {
 const rapperSchema = new mongoose.Schema({
   name: { type: String},
   image: { type: String},
+  video: { type: String },
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
   comments: [ commentSchema ]
 
