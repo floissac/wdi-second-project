@@ -4,7 +4,7 @@ function indexRoute(req, res) {
   User
     .find()
     .exec()
-    .then((users) => res.render('index', { users }));
+    .then((users) => res.render('index', { users: users }));
 }
 function secretRoute(req, res) {
   res.render('secret');

@@ -1,52 +1,41 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="/">Home</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/rappers">Explore Rappers</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/rappers/new">Add Rapper</a>
-      </li>
-    </ul>
-  </div>
-    <% if (locals.isLoggedIn) { %>
-      <li class="nav-item">
-        <li class="nav-item">
-        <a class="nav-link" href="/secret">Your Profile</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/logout">Logout</a>
-      </li>
-      <% } else { %>
-      <li class="nav-item">
-        <a class="nav-link" href="/login">Sign in</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/register">Create account</a>
-      </li>
-        <% } %>
-    </ul>
-</nav>
-
 
 <main class="container">
   <div class="row">
     <div class="col-9">
       <h2><%= rapper.name %></h2>
+
       <img src="<%= rapper.image %>" alt="<%= rapper.name %>">
-      <p><%= rapper.bio %></p>
+        <h3>Created by: <%= rapper.createdBy.username %></h3>
     </div>
   </div>
-  <aside class="aside">
-    <a href="/rappers/<%= rapper.id %>/edit" class="button button-primary">Edit</a>
-    <form method="POST" action="/rappers/<%= rapper.id %>">
-      <input type="hidden" name="_method" value="DELETE">
-      <button>Delete</button>
-    </aside>
-  </form>
+
+  <% if(locals.isLoggedIn && rapper.belongsTo(user)) { %>
+<a href="/rappers/<%= rapper.id %>/edit">Edit</a>
+<form method="POST" action="/rappers/<%= rapper.id %>">
+  <input t≈ype="hidden" name="_method" value="DELETE">
+  <button>Delete</button>
+</form>
+<% } %>
+
+    <% rapper.comments.forEach((comment) => { %>
+      <p><%= comment.content %></p>
+      <small><%= comment.createdBy.username %></small>
+
+      <% if(locals.isLoggedIn && comment.belongsTo(user)) { %>
+        <form method="POST" action="/rappers/<%= rapper.id %>/comments/<%= comment.id %>">
+          <input type="hidden" name="_method" value="DELETE">
+          <button>Delete</button>
+        </form>
+      <% } %>
+    <% }) %>
+
+    <% if(locals.isLoggedIn) { %>
+      <section>
+        <h4>Leave a comment</h4>
+        <form method="POST" action="/rappers/<%= rapper.id %>/comments">
+          <textarea name="content" id="content" placeholder="Comment"></textarea>
+          <button class="button">Leave a comment</button>
+        </form>
+      </section>
+    <% } %>
 </main>

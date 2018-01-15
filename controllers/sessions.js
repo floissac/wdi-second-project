@@ -1,9 +1,9 @@
 const User = require('../models/user');
 
-function newRoute(req, res) {
+function sessionsNew(req, res) {
   res.render('sessions/new');
 }
-function createRoute(req, res) {
+function sessionsCreate(req, res) {
   User
     .findOne({ email: req.body.email })
     .exec()
@@ -13,6 +13,8 @@ function createRoute(req, res) {
       }
 
       req.session.userId = user.id;
+      req.user = user;
+
       req.flash('info', `Welcome, ${user.username}! `);
       res.redirect('/rappers');
     })
@@ -21,14 +23,12 @@ function createRoute(req, res) {
     });
 }
 
-function deleteRoute(req, res) {
-  return req.session.regenerate(() => {
-    res.redirect('/');
-  });
+function sessionsDelete(req, res) {
+  req.session.regenerate(() => res.redirect('/'));
 }
 
 module.exports = {
-  new: newRoute,
-  create: createRoute,
-  delete: deleteRoute
+  new: sessionsNew,
+  create: sessionsCreate,
+  delete: sessionsDelete
 };

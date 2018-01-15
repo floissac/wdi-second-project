@@ -1,43 +1,57 @@
 const mongoose   = require('mongoose');
-mongoose.Promise = require('bluebird');
+const { dbURI } = require('../config/environment');
 
-const databaseURL = 'mongodb://localhost/express-authentication';
-mongoose.connect(databaseURL);
+mongoose.Promise = require('bluebird');
+mongoose.connect(dbURI);
 
 const Rapper = require('../models/rapper');
+const User = require('../models/user');
 
 Rapper.collection.drop();
+User.collection.drop();
 
-Rapper
+
+User
   .create([{
-    name: '',
-    image: ''
-  },{
-    name: '',
-    image: ''
-  },{
-    name: '',
-    image: '',
-    bio: ''
-  },{
-    name: '',
-    image: '',
-    bio: ''
-  },{
-    name: '',
-    image: '',
-    bio: ''
-  },{
-    name: '',
-    image: '',
-    bio: ''
+    firstName: 'Mike',
+    lastName: 'Hayden',
+    username: 'WillFlo',
+    email: 'Flo@gmail.com',
+    password: 'password',
+    passwordConfirmation: 'password'
   }])
-  .then((rappers) => {
-    console.log(`${rappers.length} rappers created!`);
+  .then((users) => {
+    console.log(`${users.length} users created`);
+    return Rapper
+      .create([{
+        name: '',
+        image: '',
+        createdBy: users[0]
+      },{
+        name: '',
+        image: '',
+        createdBy: users[0]
+      },{
+        name: '',
+        image: '',
+        createdBy: users[0]
+
+      },{
+        name: '',
+        image: '',
+        createdBy: users[0]
+
+      },{
+        name: '',
+        image: '',
+        createdBy: users[0]
+
+      },{
+        name: '',
+        image: '',
+        createdBy: users[0]
+      }]);
   })
-  .catch((err) => {
-    console.log(err);
-  })
-  .finally(() => {
-    mongoose.connection.close();
-  });
+  .then((rappers) => console.log(`${rappers.length} rappers created!`))
+  .catch((err) =>  console.log(err))
+  .finally(() =>  mongoose.connection.close());

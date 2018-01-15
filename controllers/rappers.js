@@ -23,6 +23,7 @@ function rappersNew(req, res) {
 function rappersShow(req, res) {
   Rapper
     .findById(req.params.id)
+    .populate('createdBy comments.createdBy')
     .exec()
     .then((rapper) => {
       if(!rapper) return res.status(404).send('Not found');
@@ -35,6 +36,8 @@ function rappersShow(req, res) {
 
 //Create
 function rappersCreate(req, res) {
+  req.body.createdBy = req.user;
+
   Rapper
     .create(req.body)
     .then(() => {
@@ -96,6 +99,47 @@ function rappersDelete(req, res) {
     });
 }
 
+function createCommentRoute(req, res, next) {
+  req.body.createdBy = req.user;
+
+  Rapper
+    .findById(req.params.id)
+    .exec()
+    .then((rapper) => {
+      if(!rapper) return res.notFound();
+
+      rapper.comments.push(req.body);
+      return rapper.save();
+    })
+    .then((rapper) => {
+      res.redirect(`/rappers/${rapper.id}`);
+    })
+    .catch((err) => {
+      if(err.name === 'ValidationError') {
+        return res.badRequest(`/rappers/${req.params.id}`, err.toString());
+      }
+      next(err);
+    });
+}
+
+function deleteCommentRoute(req, res, next) {
+  Rapper
+    .findById(req.params.id)
+    .exec()
+    .then((rapper) => {
+      if(!rapper) return res.notFound();
+
+      const comment = rapper.comments.id(req.params.commentId);
+      comment.remove();
+
+      return rapper.save();
+    })
+    .then((rapper) => {
+      res.redirect(`/rappers/${rapper.id}`);
+    })
+    .catch(next);
+}
+
 module.exports = {
   index: rappersIndex,
   new: rappersNew,
@@ -103,5 +147,7 @@ module.exports = {
   create: rappersCreate,
   edit: rappersEdit,
   update: rappersUpdate,
-  delete: rappersDelete
+  delete: rappersDelete,
+  createComment: createCommentRoute,
+  deleteComment: deleteCommentRoute
 };

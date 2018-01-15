@@ -12,9 +12,54 @@
   <script src="/js/app.js" charset="utf-8"></script>
 </head>
 <body>
-  <header>
+  <% if(locals.isHomepage) { %>
+  <div class="jumbotron">
+    <h1 class="display-4 text-center">R'app</h1>
+  </div>
+  <% } %>
 
-</header>
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+        <% if (locals.isLoggedIn) { %>
+      <a class="navbar-brand" href="/">Home</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/rappers">Explore Rappers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/rappers/new">Add Rapper</a>
+          </li>
+            <% } else { %>
+              <a class="navbar-brand" href="/">Home</a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+                <% } %>
+        </ul>
+        <ul class="navbar-nav">
+        <% if (locals.isLoggedIn) { %>
+          <li class="nav-item">
+            <li class="nav-item">
+            <a class="nav-link" href="/secret">Your Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout</a>
+          </li>
+          <% } else { %>
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Sign in</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/register">Create account</a>
+          </li>
+            <% } %>
+        </ul>
+      </div>
+    </nav>
 <main class="container">
   <%- body %>
 </main>

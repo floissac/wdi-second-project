@@ -14,7 +14,7 @@ const routes         = require('./config/routes');
 const flash          = require('express-flash');
 
 
-const databaseURL = 'mongodb://localhost/restful-routing';
+const databaseURL = 'mongodb://localhost/second-project';
 mongoose.connect(databaseURL);
 mongoose.connect(dbURI);
 
@@ -54,6 +54,9 @@ app.use((req, res, next) => {
           res.redirect('/');
         });
       }
+
+      req.user = user;
+
       res.locals.user = user;
       res.locals.isLoggedIn = true;
 
