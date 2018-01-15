@@ -1,0 +1,66 @@
+
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/rappers">Explore Rappers</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/rappers/new">Add Rapper</a>
+        </li>
+      </ul>
+    </div>
+      <% if (locals.isLoggedIn) { %>
+        <li class="nav-item">
+          <li class="nav-item">
+          <a class="nav-link" href="/secret">Your Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Logout</a>
+        </li>
+        <% } else { %>
+        <li class="nav-item">
+          <a class="nav-link" href="/login">Sign in</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/register">Create account</a>
+        </li>
+          <% } %>
+      </ul>
+  </nav>
+
+
+<h1>New Rapper</h1>
+
+<style type="text/css">
+body {
+  background-color: red;
+}
+</style>
+
+
+
+
+<div class="row">
+  <form method="POST" action="/rappers">
+    <div>
+      <label for="name">Name</label>
+      <input class="u-full-width" type="text" name="name" id="name">
+    </div>
+    <div>
+      <label for="image">Image</label>
+      <input class="u-full-width" type="text" name="image" id="image">
+    </div>
+    <div>
+      <label for="bio">Bio</label>
+      <textarea class="u-full-width" name="bio"></textarea>
+    </div>
+      <button class="button-primary u-full-width">Create</button>
+  </form>
+</div>

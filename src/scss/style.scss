@@ -1,4 +1,41 @@
-// import scss partials here
-body {
-  font-family: 'Helvetica', sans-serif;
+
+.jumbotron {
+  color: white;
+  text-shadow:  2px 2px #0873a1;
+  margin-bottom: 0;
+  justify-content: center;
+  opacity: 0.8;
+  line-height: 1.50;
+  letter-spacing: .05rem;
+
+.create-account {
+  h1 {
+    font-size: 10px;
+  }
 }
+
+}
+.navbar {
+  opacity:0.3;
+  color: white;
+ &:hover {
+   opacity: .5;
+   background-color: #0873a1;
+   transition: 0.3s ease;
+ }
+}
+.u-full-width {
+  width: 100%;
+  box-sizing: border-box; }
+.u-max-full-width {
+  max-width: 100%;
+  box-sizing: border-box; }
+.u-pull-right {
+  float: right; }
+.u-pull-left {
+  float: left; }
+
+  .details {
+      font-size: 13px;
+      justify-content: center;
+    }
