@@ -3,7 +3,7 @@
 const express = require('express');
 const router  = express.Router();
 const rappers = require('../controllers/rappers');
-const statics = require('../controllers/statics');
+// const statics = require('../controllers/statics');
 const registrations = require('../controllers/registrations');
 const sessions = require('../controllers/sessions');
 const secureRoute = require('../lib/secureRoute');
@@ -43,6 +43,6 @@ router.route('/logout')
   .get(sessions.delete);
 
 router.route('/secret')
-  .get(secureRoute, statics.secret);
+  .get(secureRoute, rappers.secret);
 
 module.exports = router;

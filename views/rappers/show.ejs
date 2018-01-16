@@ -1,25 +1,26 @@
-
 <style type="text/css">
-a {
-  text-decoration: none;
+
+h3 {
+    text-decoration: none;
 }
 </style>
 
+<% if(locals.isLoggedIn && rapper.belongsTo(user)) { %>
 <main class="container">
   <div class="row">
-    <div class="col-9">
+    <div class="col-6">
       <h2><%= rapper.name %></h2>
       <h3>
-      <img src="<%= rapper.image %>" alt="<%= rapper.name %>">
+      <img src="<%= rapper.image %>" class="img-fluid rounded-circle" alt="<%= rapper.name %>">
       </h3>
       <br>
       <div class="embed-responsive embed-responsive-16by9">
       <iframe class="embed-responsive-item" src="<%= rapper.video %>" alt="<% rapper.name %>"></iframe>
-    </div>
-        <a href="/rappers/<%= rapper.id %>"><h3><%= rapper.createdBy.username %></h3></a>
+      </div>
+      <h3><a href="/rappers/<%= rapper.id %>"><h3><%= rapper.createdBy.username %></h3></a>
     </div>
   </div>
-
+  <% } %>
 
   <% if(locals.isLoggedIn && rapper.belongsTo(user)) { %>
 <button>
@@ -32,13 +33,13 @@ a {
 </form>
 <% } %>
     <% rapper.comments.forEach((comment) => { %>
-      <p><%= comment.content %></p>
       <small><%= comment.createdBy.username %></small>
+      <p><%= comment.content %></p>
 
       <% if(locals.isLoggedIn && comment.belongsTo(user)) { %>
         <form method="POST" action="/rappers/<%= rapper.id %>/comments/<%= comment.id %>">
           <input type="hidden" name="_method" value="DELETE">
-          <button>Delete</button>
+          <button class="btn btn-danger btn-sm">Delete comment</button>
         </form>
       <% } %>
     <% }) %>
@@ -49,7 +50,7 @@ a {
         <form method="POST" action="/rappers/<%= rapper.id %>/comments">
           <textarea name="content" id="content" placeholder="Comment"></textarea>
           <br>
-          <button class="button">Leave a comment</button>
+          <button class="btn btn-primary btn-sml">Leave a comment</button>
         </form>
       </section>
     <% } %>

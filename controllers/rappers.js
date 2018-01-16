@@ -33,6 +33,20 @@ function rappersShow(req, res) {
       res.status(500).render('error', { err });
     });
 }
+function rappersSecret(req, res) {
+  Rapper
+    .find()
+    .populate('createdBy comments.createdBy')
+    .exec()
+    .then((rappers) => {
+      if(!rappers) return res.status(404).send('Not found');
+      res.render('secret', { rappers });
+      console.log('secret rappers');
+    })
+    .catch((err) => {
+      res.status(500).render('error', { err });
+    });
+}
 
 //Create
 function rappersCreate(req, res) {
@@ -144,6 +158,7 @@ module.exports = {
   index: rappersIndex,
   new: rappersNew,
   show: rappersShow,
+  secret: rappersSecret,
   create: rappersCreate,
   edit: rappersEdit,
   update: rappersUpdate,
