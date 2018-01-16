@@ -5,7 +5,6 @@ h3 {
 }
 </style>
 
-<% if(locals.isLoggedIn && rapper.belongsTo(user)) { %>
 <main class="container">
   <div class="row">
     <div class="col-6">
@@ -20,9 +19,9 @@ h3 {
       <h3><a href="/rappers/<%= rapper.id %>"><h3><%= rapper.createdBy.username %></h3></a>
     </div>
   </div>
-  <% } %>
 
-  <% if(locals.isLoggedIn && rapper.belongsTo(user)) { %>
+
+
 <button>
 <a href="/rappers/<%= rapper.id %>/edit">Edit</a>
 </button>
@@ -31,7 +30,7 @@ h3 {
   <input type="hidden" name="_method" value="DELETE">
   <button>Delete</button>
 </form>
-<% } %>
+
     <% rapper.comments.forEach((comment) => { %>
       <small><%= comment.createdBy.username %></small>
       <p><%= comment.content %></p>
