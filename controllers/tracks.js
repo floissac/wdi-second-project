@@ -24,19 +24,12 @@ function createTrackRoute(req, res, next) {
       if(!rapper) return res.notFound();
 
       rapper.tracks.push(req.body);
-      console.log('tracks pushed');
       return rapper.save();
     })
     .then((rapper) => {
       res.redirect(`/rappers/${rapper.id}`);
-      console.log('redirect track');
     })
-    .catch((err) => {
-      if(err.name === 'ValidationError') {
-        return res.badRequest(`/rappers/${req.params.id}`, err.toString());
-      }
-      next(err);
-    });
+    .catch(next);
 }
 
 // <----delete track---->

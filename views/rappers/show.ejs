@@ -6,14 +6,13 @@
         <img src="<%= rapper.image %>" class="img-fluid rounded-circle" alt="<%= rapper.name %>">
       </h3>
       <br>
-
     </div>
   </div>
   <div class="row">
     <form method="POST" action="/rappers/<%= rapper.id %>/tracks">
       <div>
-        <label for="tracks">Track</label>
-        <input class="u-full-width" type="text" name="trackId">
+        <label for="trackId">Track</label>
+        <input class="u-full-width" type="text" id="trackId" name="trackId">
       </div>
       <div>
         <label for="caption">Caption</label>

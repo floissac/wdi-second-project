@@ -1,9 +1,11 @@
 
 <h1>Tracks Show</h1>
 
+
 <h4>Added By</h4>
 <p><%= track.createdBy.username %></p>
 
+<p><%= track.caption %></p>
 
   <iframe class="embed-responsive-item" src="<%= track.trackId %>"></iframe>
 
@@ -13,6 +15,13 @@
     <li>
       <p><%= comment.createdBy.username %></p>
       <p><%= comment.content %></p>
+      <% if(comment.belongsTo(user)) { %>
+        <form method="POST" action="/rappers/<%= rapper.id %>/tracks/<%= track.id %>/comments/<%= comment.id %>">
+          <input type="hidden" name="_method" value="DELETE">
+          <button class="btn btn-danger btn-sm">Delete comment</button>
+        </form>
+      <% } %>
+    </li>
   <% }) %>
 </ul>
 

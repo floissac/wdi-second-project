@@ -16,28 +16,25 @@ router.route('/users')
 router.route('/rappers')
   .get(secureRoute, rappers.index)
   .post(secureRoute, rappers.create);
-
 router.route('/rappers/new')
   .get(secureRoute, rappers.new);
-
 router.route('/rappers/:id')
   .get(secureRoute, rappers.show)
   .put(rappers.update)
   .delete(rappers.delete);
-
 router.route('/rappers/:id/edit')
   .get(secureRoute, rappers.edit);
-
-router.route('/rappers/:id/tracks/:trackId/comments')
-  .post(comments.create);
-router.route('/rappers/:id/tracks/:trackId/comments/:commentId')
-  .delete(comments.delete);
 
 router.route('/rappers/:id/tracks')
   .post(secureRoute, tracks.create);
 router.route('/rappers/:id/tracks/:trackId')
   .get(secureRoute, tracks.show)
   .delete(secureRoute, tracks.delete);
+
+router.route('/rappers/:id/tracks/:trackId/comments')
+  .post(comments.create);
+router.route('/rappers/:id/tracks/:trackId/comments/:commentId')
+  .delete(comments.delete);
 
 router.route('/register')
   .get(registrations.new) // the register form

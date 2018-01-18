@@ -113,7 +113,6 @@ function rappersDelete(req, res) {
       res.status(500).render('error', { err });
     });
 }
-// <---create track--->
 
 module.exports = {
   index: rappersIndex,
