@@ -12,19 +12,39 @@
   <script src="/js/app.js" charset="utf-8"></script>
 </head>
 <body>
-  <% if(locals.isHomepage) { %>
-  <div class="jumbotron">
-    <h1 class="display-4 text-center">R'app</h1>
-  </div>
-  <% } %>
 
-    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
-        <% if (locals.isLoggedIn) { %>
-      <a class="navbar-brand" href="/">Home</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <% if(locals.isHomepage && !locals.isLoggedIn) { %>
+    <style>
+    .jumbotron {
+      margin-right: 5rem;
+      margin-left: 5rem;
+    }
+    .navbar {
+      margin-right: 5rem;
+      margin-left: 5rem;
+    }
+    </style>
+
+    <div class="jumbotron">
+      <h1 class="display-3 text-center">Connect on R'app</h1><br>
+      <p class="lead text-center">Stream, discover & post tracks by your favourite rappers.</p>
+      <hr class="my-4 text-center">
+      <!-- <p class=" lead text-center">Connect with other users, like and comment on other their posts</p> -->
+      <p class="lead text-center">
+        <a class="btn btn-primary btn-md" href="/login" role="button">Sign in</a>
+      </p>
+    </div>
+
+
+    <% } %>
+
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light navbar-inverse">
+      <% if (locals.isLoggedIn) { %>
+        <a class="navbar-brand" href="/">Home</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
           </li>
           <li class="nav-item">
@@ -33,35 +53,38 @@
           <li class="nav-item">
             <a class="nav-link" href="/rappers/new">Add Rapper</a>
           </li>
-            <% } else { %>
-              <a class="navbar-brand" href="/">Home</a>
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-                <% } %>
-        </ul>
-        <ul class="navbar-nav">
-        <% if (locals.isLoggedIn) { %>
           <li class="nav-item">
-            <li class="nav-item">
-            <a class="nav-link" href="/secret">Your Profile</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/logout">Logout</a>
+            <a class="nav-link" href="/rappers/users">Users</a>
           </li>
           <% } else { %>
-          <li class="nav-item">
-            <a class="nav-link" href="/login">Sign in</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/register">Create account</a>
-          </li>
+            <a class="navbar-brand" href="/">Home</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
             <% } %>
-        </ul>
-      </div>
-    </nav>
-<main class="container">
-  <%- body %>
-</main>
-</body>
-</html>
+          </ul>
+          <ul class="navbar-nav">
+            <% if (locals.isLoggedIn) { %>
+              <li class="nav-item">
+                <li class="nav-item">
+                  <a class="nav-link" href="/secret">Your Profile</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/logout">Logout</a>
+                </li>
+                <% } else { %>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/login">Sign in</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/register">Create account</a>
+                  </li>
+                  <% } %>
+                </ul>
+              </div>
+            </nav>
+            <main class="container">
+              <%- body %>
+            </main>
+          </body>
+          </html>

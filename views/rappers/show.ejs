@@ -1,56 +1,30 @@
-<style type="text/css">
-
-h3 {
-    text-decoration: none;
-}
-</style>
-
 <main class="container">
   <div class="row">
     <div class="col-6">
       <h2><%= rapper.name %></h2>
       <h3>
-      <img src="<%= rapper.image %>" class="img-fluid rounded-circle" alt="<%= rapper.name %>">
+        <img src="<%= rapper.image %>" class="img-fluid rounded-circle" alt="<%= rapper.name %>">
       </h3>
       <br>
-      <div class="embed-responsive embed-responsive-16by9">
-      <iframe class="embed-responsive-item" src="<%= rapper.video %>" alt="<% rapper.name %>"></iframe>
-      </div>
-      <h3><a href="/rappers/<%= rapper.id %>"><h3><%= rapper.createdBy.username %></h3></a>
+
     </div>
   </div>
+  <div class="row">
+    <form method="POST" action="/rappers/<%= rapper.id %>/tracks">
+      <div>
+        <label for="tracks">Track</label>
+        <input class="u-full-width" type="text" name="trackId">
+      </div>
+      <div>
+        <label for="caption">Caption</label>
+        <textarea class="u-full-width" name="caption"></textarea>
+      </div>
+      <button class="button-primary u-full-width">Create</button>
+    </form>
+  </div>
 
-
-
-<button>
-<a href="/rappers/<%= rapper.id %>/edit">Edit</a>
-</button>
-<br>
-<form method="POST" action="/rappers/<%= rapper.id %>">
-  <input type="hidden" name="_method" value="DELETE">
-  <button>Delete</button>
-</form>
-
-    <% rapper.comments.forEach((comment) => { %>
-      <small><%= comment.createdBy.username %></small>
-      <p><%= comment.content %></p>
-
-      <% if(locals.isLoggedIn && comment.belongsTo(user)) { %>
-        <form method="POST" action="/rappers/<%= rapper.id %>/comments/<%= comment.id %>">
-          <input type="hidden" name="_method" value="DELETE">
-          <button class="btn btn-danger btn-sm">Delete comment</button>
-        </form>
-      <% } %>
-    <% }) %>
-
-    <% if(locals.isLoggedIn) { %>
-      <section>
-        <h4>Leave a comment</h4>
-        <form method="POST" action="/rappers/<%= rapper.id %>/comments">
-          <textarea name="content" id="content" placeholder="Comment"></textarea>
-          <br>
-          <button class="btn btn-primary btn-sml">Leave a comment</button>
-        </form>
-      </section>
-    <% } %>
+  <% rapper.tracks.forEach((track) => { %>
+    <a href="/rappers/<%= rapper.id %>/tracks/<%= track.id %>">View Track</a>
+    <iframe class="embed-responsive-item" src="<%= track.trackId %>" alt="<%= rapper.name %>"></iframe>
+  <% }) %>
 </main>

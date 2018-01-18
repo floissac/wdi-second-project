@@ -1,14 +1,17 @@
-// const router = require('express').Router();
-
 const express = require('express');
 const router  = express.Router();
 const rappers = require('../controllers/rappers');
-// const statics = require('../controllers/statics');
+const tracks = require('../controllers/tracks');
+const comments = require('../controllers/comments');
+const users   = require('../controllers/users');
 const registrations = require('../controllers/registrations');
 const sessions = require('../controllers/sessions');
 const secureRoute = require('../lib/secureRoute');
 
 router.get('/', (req, res) => res.render('index', { isHomepage: true }));
+
+router.route('/users')
+  .get(users.index);
 
 router.route('/rappers')
   .get(secureRoute, rappers.index)
@@ -25,11 +28,16 @@ router.route('/rappers/:id')
 router.route('/rappers/:id/edit')
   .get(secureRoute, rappers.edit);
 
-router.route('/rappers/:id/comments')
-  .post(rappers.createComment);
+router.route('/rappers/:id/tracks/:trackId/comments')
+  .post(comments.create);
+router.route('/rappers/:id/tracks/:trackId/comments/:commentId')
+  .delete(comments.delete);
 
-router.route('/rappers/:id/comments/:commentId')
-  .delete(rappers.deleteComment);
+router.route('/rappers/:id/tracks')
+  .post(secureRoute, tracks.create);
+router.route('/rappers/:id/tracks/:trackId')
+  .get(secureRoute, tracks.show)
+  .delete(secureRoute, tracks.delete);
 
 router.route('/register')
   .get(registrations.new) // the register form

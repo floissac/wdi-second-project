@@ -1,0 +1,24 @@
+
+<h1>Tracks Show</h1>
+
+<h4>Added By</h4>
+<p><%= track.createdBy.username %></p>
+
+
+  <iframe class="embed-responsive-item" src="<%= track.trackId %>"></iframe>
+
+<h2>Comments</h2>
+<ul>
+  <% track.comments.forEach(comment => { %>
+    <li>
+      <p><%= comment.createdBy.username %></p>
+      <p><%= comment.content %></p>
+  <% }) %>
+</ul>
+
+<h2>Leave a comment</h2>
+<form method="POST" action="/rappers/<%= rapper.id %>/tracks/<%= track.id %>/comments">
+  <textarea name="content" id="content" placeholder="Comment"></textarea>
+  <br>
+  <button class="btn btn-primary btn-sml">Leave a comment</button>
+</form>

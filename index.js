@@ -13,9 +13,6 @@ const app            = express();
 const routes         = require('./config/routes');
 const flash          = require('express-flash');
 
-
-const databaseURL = 'mongodb://localhost/second-project';
-mongoose.connect(databaseURL);
 mongoose.connect(dbURI);
 
 app.set('view engine', 'ejs');

@@ -2,21 +2,31 @@
 
 <style type="text/css">
 body {
-  background-image: url('https://images.unsplash.com/photo-1432250767374-ee19cba37b52?auto=format&fit=crop&w=1518&q=80');
+  background-color: #F8F8FF;
     }
 </style>
 
 <div class="container">
 <div class="row">
   <% rappers.forEach((rapper) => { %>
-    <section class="col-lg-6">
-    <div class="row">
-    <div class="col-8">
-      <a href="/rappers/<%= rapper.id %>"><h3><%= rapper.name %></h3></a>
-      <img src="<%= rapper.image %>" class="img-fluid" alt="<%= rapper.name %>">
-    </section>
-  <% }); %>
+    <section class="col-lg-6 col-md-4 col-sm-6 col-xs-12">
+      <div class="row">
+          <div class="hovereffect">
+            <a href="/rappers/<%= rapper.id %>">
+            <img class="img-responsive img-fluid" src="<%= rapper.image %>" alt="<%= rapper.name %>">
+            </a>
+          <div class="overlay">
+          <h2><%= rapper.name %></h2>
+            <p class="icon-links">
+            <a href="/rappers/<%= rapper.id %>">
+          <span class="fa fa-twitter">
+          </span>
+            </a>
+            </p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+  <% }); %>
+</div>
+</div>

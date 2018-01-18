@@ -33,6 +33,7 @@ function rappersShow(req, res) {
       res.status(500).render('error', { err });
     });
 }
+// <---your profile--->
 function rappersSecret(req, res) {
   Rapper
     .find()
@@ -48,7 +49,7 @@ function rappersSecret(req, res) {
     });
 }
 
-//Create
+//Create rapper
 function rappersCreate(req, res) {
   req.body.createdBy = req.user;
 
@@ -62,7 +63,7 @@ function rappersCreate(req, res) {
     });
 }
 
-//Edit
+//Edit rapper
 function rappersEdit(req, res) {
   Rapper
     .findById(req.params.id)
@@ -76,7 +77,7 @@ function rappersEdit(req, res) {
     });
 }
 
-//Update
+//Update rapper
 function rappersUpdate(req, res) {
   Rapper
     .findById(req.params.id)
@@ -95,7 +96,7 @@ function rappersUpdate(req, res) {
     });
 }
 
-//Delete
+//Delete rapper
 function rappersDelete(req, res) {
   Rapper
     .findById(req.params.id)
@@ -112,47 +113,7 @@ function rappersDelete(req, res) {
       res.status(500).render('error', { err });
     });
 }
-
-function createCommentRoute(req, res, next) {
-  req.body.createdBy = req.user;
-
-  Rapper
-    .findById(req.params.id)
-    .exec()
-    .then((rapper) => {
-      if(!rapper) return res.notFound();
-
-      rapper.comments.push(req.body);
-      return rapper.save();
-    })
-    .then((rapper) => {
-      res.redirect(`/rappers/${rapper.id}`);
-    })
-    .catch((err) => {
-      if(err.name === 'ValidationError') {
-        return res.badRequest(`/rappers/${req.params.id}`, err.toString());
-      }
-      next(err);
-    });
-}
-
-function deleteCommentRoute(req, res, next) {
-  Rapper
-    .findById(req.params.id)
-    .exec()
-    .then((rapper) => {
-      if(!rapper) return res.notFound();
-
-      const comment = rapper.comments.id(req.params.commentId);
-      comment.remove();
-
-      return rapper.save();
-    })
-    .then((rapper) => {
-      res.redirect(`/rappers/${rapper.id}`);
-    })
-    .catch(next);
-}
+// <---create track--->
 
 module.exports = {
   index: rappersIndex,
@@ -162,7 +123,5 @@ module.exports = {
   create: rappersCreate,
   edit: rappersEdit,
   update: rappersUpdate,
-  delete: rappersDelete,
-  createComment: createCommentRoute,
-  deleteComment: deleteCommentRoute
+  delete: rappersDelete
 };
