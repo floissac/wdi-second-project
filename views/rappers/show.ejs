@@ -1,3 +1,4 @@
+
 <main class="container">
   <div class="row">
     <div class="col-6">
@@ -5,7 +6,7 @@
       <h3>
         <img src="<%= rapper.image %>" class="img-fluid rounded-circle" alt="<%= rapper.name %>">
       </h3>
-                <form method="POST" action="/rappers/<%= rapper.id %>/tracks">
+              <form method="POST" action="/rappers/<%= rapper.id %>/tracks">
             <% rapper.tracks.forEach((track) => { %>
               <h4><a href="/rappers/<%= rapper.id %>/tracks/<%= track.id %>">View track</a></h4>
               <iframe class="embed-responsive-1by1" src="<%= track.trackId %>" alt="<%= rapper.name %>"></iframe>
@@ -20,8 +21,6 @@
             </div>
             <button class="button-primary u-full-width">Create</button>
           </form>
-
-
     </div>
   </div>
 
