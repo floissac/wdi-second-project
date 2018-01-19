@@ -2,7 +2,7 @@
 .jumbotron {
   background-image: url('https://images.unsplash.com/photo-1432250767374-ee19cba37b52?auto=format&fit=crop&w=1518&q=80');
   color: white;
-  // text-shadow:  2px 2px #0873a1;
+
   margin-bottom: 0;
   justify-content: center;
   opacity: 0.8;
@@ -15,6 +15,22 @@
   p {
     font-size: 19px;
   }
+}
+
+  h1 {
+    color: white;
+    text-shadow: 1px 0 0 #D3D3D3, 0 -1px 0 #D3D3D3, 0 1px 0 #D3D3D3, -1px 0 0 #D3D3D3;
+  }
+
+  .row {
+    color: white;
+  }
+
+
+
+img {
+  padding: 0px;
+  }
 
 .newReg{
   h1 {
@@ -22,25 +38,17 @@
   }
 }
 
-
 .create-account {
   h1 {
     font-size: 10px;
   }
 }
-
-img {
-  padding: 10px;
-
-  }
-}
-
 iframe {
   margin: 0 auto;
 }
 
 body {
-  background-color: #FFFAFA;
+  background-color: #FFE4B5;
 }
 .navbar {
   opacity:0.3;

@@ -9,7 +9,7 @@ function createRoute(req, res) {
     .create(req.body)
     .then((user) => {
       req.flash('info', `Thanks for registering, ${user.username}! Please login`);
-      res.redirect('/rappers');
+      res.redirect('/');
     })
 
     .catch((err) => {

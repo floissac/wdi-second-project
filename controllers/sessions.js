@@ -16,7 +16,7 @@ function sessionsCreate(req, res) {
       req.user = user;
 
       req.flash('info', `Welcome, ${user.username}! `);
-      res.redirect('/rappers');
+      res.redirect('/');
     })
     .catch(() => {
       res.status(500).end();
