@@ -1,7 +1,50 @@
-
-
   <% if (locals.message) { %>
     <div class="alert alert-primary">
       <%= message %>
     </div>
+  <% } %>
+
+  <% if(locals.isHomepage && locals.isLoggedIn) { %>
+<div class="container">
+  <div id="demo" class="carousel slide" data-ride="carousel">
+
+    <ul class="carousel-indicators">
+      <li data-target="#demo" data-slide-to="0" class="active"></li>
+      <li data-target="#demo" data-slide-to="1"></li>
+      <li data-target="#demo" data-slide-to="2"></li>
+    </ul>
+
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://media.newyorker.com/photos/5935bd9464bb6d6a4c02b9fb/16:9/w_1200,h_630,c_limit/Tchou-Rich-Chigga.jpg" alt="rich chigga">
+          <div class="carousel-caption">
+          <h3>Discorvery</h3>
+          <p>Discover new songs from your favourite rappers.</p>
+         </div>
+        </div>
+        <div class="carousel-item">
+        <img src="http://according2hiphop.com/wp-content/uploads/2017/11/gucci-mane-press-2017-billboard-1548-1-1200x630.jpg" alt="Lil Pump">
+        <div class="carousel-caption">
+        <h3>Spread the word</h3>
+        <p>Share your favourite tracks with other users.</p>
+      </div>
+      </div>
+      <div class="carousel-item">
+        <img src="http://images.thissongissick.com/c_fill-f_auto-g_faces-h_630-w_1200-v1514393849-this-song-is-sick-media-image-asap-rocky-gang-1514393849706-jpg.jpg" alt="ASAP Rocky">
+        <div class="carousel-caption">
+        <h3>Interaction</h3>
+        <p>Interact with other users by commenting on their posts.</p>
+        </div>
+      </div>
+    </div>
+
+    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo" data-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </a>
+  </div>
+</div>
+
   <% } %>

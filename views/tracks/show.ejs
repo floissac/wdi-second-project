@@ -1,33 +1,50 @@
+<style type="text/css">
 
-<h1>Tracks Show</h1>
+h1 {
+  font-size: 30px;
+}
 
+container {
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 13px;
+  padding-left: 15px;
+}
 
-<h4>Added By</h4>
-<p><%= track.createdBy.username %></p>
+</style>
+      <h3><%= track.createdBy.username %>:</h3>
+      <p><%= track.caption %></p>
 
-<p><%= track.caption %></p>
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" src="<%= track.trackId %>" allowfullscreen></iframe>
+      </div>
 
-  <iframe class="embed-responsive-item" src="<%= track.trackId %>"></iframe>
+                <div class="row">
+                  <div class="blue col-md-6 offset-md-3">
+                  <div class="contrainer">
+                      <% track.comments.forEach(comment => { %>
+                        <h4 class="media-heading user_name"><p><%= comment.createdBy.username %></p></h4>
+                        <p><%= comment.content %></p>
+                        <% }) %>
+                        <form method="POST" action="/rappers/<%= rapper.id %>/tracks/<%= track.id %>/comments">
+                        <textarea name="content" id="content" placeholder="Comment"></textarea>
+                        <br>
+                        <small class="pull-right"><button class="btn btn-primary btn-sml">Leave a comment</small></button>
+                        </form>
 
-<h2>Comments</h2>
-<ul>
-  <% track.comments.forEach(comment => { %>
-    <li>
-      <p><%= comment.createdBy.username %></p>
-      <p><%= comment.content %></p>
-      <% if(comment.belongsTo(user)) { %>
-        <form method="POST" action="/rappers/<%= rapper.id %>/tracks/<%= track.id %>/comments/<%= comment.id %>">
-          <input type="hidden" name="_method" value="DELETE">
-          <button class="btn btn-danger btn-sm">Delete comment</button>
-        </form>
-      <% } %>
-    </li>
-  <% }) %>
-</ul>
-
-<h2>Leave a comment</h2>
-<form method="POST" action="/rappers/<%= rapper.id %>/tracks/<%= track.id %>/comments">
-  <textarea name="content" id="content" placeholder="Comment"></textarea>
-  <br>
-  <button class="btn btn-primary btn-sml">Leave a comment</button>
-</form>
+                        <div class="media">
+                        <% track.comments.forEach(comment => { %>
+                          <% if(comment.belongsTo(user)) { %>
+                        <div class="media-body">
+                        <form method="POST" action="/rappers/<%= rapper.id %>/tracks/<%= track.id %>/comments/<%= comment.id %>">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <p class="pull-right"><small><button class="btn btn-danger btn-sm">Delete comment</button></small></p>
+                        </form>
+                        <% } %>
+                        <% }) %>
+                      </div>
+                    </div>
+              </div>
+            </div>
+            </div>

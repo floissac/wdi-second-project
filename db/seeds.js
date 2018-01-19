@@ -25,7 +25,7 @@ User
       passwordConfirmation: 'password'
     },
     {
-      username: 'Rgowan',
+      username: 'rGowan',
       email: 'rane@ga.com',
       password: 'password',
       passwordConfirmation: 'password'
@@ -37,10 +37,10 @@ User
     return Rapper.create([
       {
         name: 'Coolio',
-        image: 'https://www.thefamouspeople.com/profiles/images/coolio-4.jpg',
+        image: 'https://www.bet.com/music/photos/2011/06/childsupport051310/_jcr_content/mainCol/imagegallerycontainer/galleryimage_8.custom1540fx865fx0xcrop.dimg/__1396373659056/040114-fashion-and-beauty-chop-it-up-hip-hops-wildest-hairstyles-coolio.jpg',
         tracks: [
           {
-            trackId: 'https://www.youtube.com/embed/N6voHeEa3ig',
+            trackId: 'https://www.youtube.com/embed/fPO76Jlnz6c',
             caption: 'this is a siiiiiiiiick tune bruva',
             createdBy: users[0].id,
             comments: [
@@ -63,7 +63,7 @@ User
         ]
       }, {
         name: 'Vince Staples',
-        image: 'https://i.scdn.co/image/cc617e10a9dd37d8ac4b55239744b46c3ee04280',
+        image: 'https://cdn.pitchfork.com/longform/582/1_VinceStaples_790x790.jpg',
         tracks: [
           {
             trackId: 'https://www.youtube.com/embed/5OAYMMod9Wo',
@@ -99,7 +99,7 @@ User
         tracks: [
           {
             trackId: 'https://www.youtube.com/embed/meXPbvp3ldg',
-            caption: 'flmaes!',
+            caption: 'flames!',
             createdBy: users[0].id,
             comments: [
               {

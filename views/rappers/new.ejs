@@ -1,11 +1,7 @@
 <%# <---Add rapper---> %>
-<h1>New Rapper</h1>
 
-<style type="text/css">
-body {
-  background-image: url('https://images.unsplash.com/photo-1466554735730-6281a8638806?auto=format&fit=crop&w=1950&q=80');
-}
-</style>
+<div class=newRapper>
+  <h1>New Rapper</h1>
 
 <div class="row">
   <form method="POST" action="/rappers">
@@ -17,10 +13,8 @@ body {
       <label for="image">Image</label>
       <input class="u-full-width" type="text" name="image" id="image">
     </div>
-    <div>
-      <label for="caption">Caption</label>
-      <textarea class="u-full-width" name="caption"></textarea>
-    </div>
+    <br>
       <button class="button-primary u-full-width">Create</button>
-  </form>
+    </form>
+  </div>
 </div>

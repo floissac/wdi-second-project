@@ -16,6 +16,12 @@
     font-size: 19px;
   }
 
+.newReg{
+  h1 {
+    font-size: 30px;
+  }
+}
+
 
 .create-account {
   h1 {
@@ -26,8 +32,15 @@
 img {
   padding: 10px;
 
+  }
 }
 
+iframe {
+  margin: 0 auto;
+}
+
+body {
+  background-color: #FFFAFA;
 }
 .navbar {
   opacity:0.3;
@@ -177,4 +190,16 @@ img {
       .hovereffect:hover p.icon-links a:first-child {
       	-webkit-transition-delay: 0.2s;
       	transition-delay: 0.2s;
+      }
+
+
+      .col-6 {
+        form {
+          margin-left: 60px;
+        }
+      }
+
+      .blue {
+        padding-top: 10px;
+        text-align: center;
       }
