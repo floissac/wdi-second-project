@@ -37,7 +37,7 @@ User
     return Rapper.create([
       {
         name: 'Coolio',
-        image: 'https://www.bet.com/music/photos/2011/06/childsupport051310/_jcr_content/mainCol/imagegallerycontainer/galleryimage_8.custom1540fx865fx0xcrop.dimg/__1396373659056/040114-fashion-and-beauty-chop-it-up-hip-hops-wildest-hairstyles-coolio.jpg',
+        image: 'https://static.spin.com/files/140930-coolio-interview-2pac-1994.jpg',
         tracks: [
           {
             trackId: 'https://www.youtube.com/embed/fPO76Jlnz6c',
@@ -110,7 +110,7 @@ User
           }
         ]
       }, {
-        name: 'Rich Brian, AKA Rich Chigga',
+        name: 'Rich Brian',
         image: 'https://exclaim.ca//images/AmenArt.jpg',
         tracks: [
           {
