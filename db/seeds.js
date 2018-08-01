@@ -41,7 +41,7 @@ User
         tracks: [
           {
             trackId: 'fPO76Jlnz6c',
-            caption: 'this is a siiiiiiiiick tune bruva',
+            caption: 'this is a siiiiiiick tune bruva',
             createdBy: users[0].id,
             comments: [
               {
