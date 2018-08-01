@@ -9,15 +9,15 @@
               <form method="POST" action="/rappers/<%= rapper.id %>/tracks">
             <% rapper.tracks.forEach((track) => { %>
               <h4><a href="/rappers/<%= rapper.id %>/tracks/<%= track.id %>">View track</a></h4>
-              <iframe class="embed-responsive-1by1" src="<%= track.trackId %>" alt="<%= rapper.name %>"></iframe>
+              <iframe class="embed-responsive-1by1" src="https://www.youtube.com/embed/<%= track.trackId %>" alt="<%= track.trackId %>"></iframe>
             <% }) %>
-            <div>
-              <label for="trackId">Track</label>
+            <div class="form-group">
+              <label for="trackId">Track URL <br> (add the string of characters after the "=" sign in the youtube url)</label>
               <input class="u-full-width" type="text" id="trackId" name="trackId">
             </div>
-            <div>
+            <div class="form-group">
               <label for="caption">Caption</label>
-              <textarea class="u-full-width" name="caption"></textarea>
+              <input class="u-full-width" type="text" id="trackId" name="caption">
             </div>
             <button class="button-primary u-full-width">Create</button>
           </form>

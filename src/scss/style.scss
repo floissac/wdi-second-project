@@ -206,7 +206,12 @@ body {
 
       .col-6 {
         form {
-          margin-left: 60px;
+          display: flex;
+    flex: 1 0 auto;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3.25rem 1.5rem 1rem;
+    text-align: center;
         }
       }
 

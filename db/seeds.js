@@ -40,7 +40,7 @@ User
         image: 'https://static.spin.com/files/140930-coolio-interview-2pac-1994.jpg',
         tracks: [
           {
-            trackId: 'https://www.youtube.com/embed/fPO76Jlnz6c',
+            trackId: 'fPO76Jlnz6c',
             caption: 'this is a siiiiiiiiick tune bruva',
             createdBy: users[0].id,
             comments: [
@@ -56,7 +56,7 @@ User
         image: 'https://i.scdn.co/image/cc617e10a9dd37d8ac4b55239744b46c3ee04280',
         tracks: [
           {
-            trackId: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/108516846&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true',
+            trackId: '8TCrqTL5STg',
             caption: 'one of his best songs',
             createdBy: users[2].id
           }
@@ -66,7 +66,7 @@ User
         image: 'https://cdn.pitchfork.com/longform/582/1_VinceStaples_790x790.jpg',
         tracks: [
           {
-            trackId: 'https://www.youtube.com/embed/5OAYMMod9Wo',
+            trackId: '5OAYMMod9Wo',
             caption: 'this one is str8 fire',
             createdBy: users[0].id,
             comments: [
@@ -82,7 +82,7 @@ User
         image: 'https://ssli.ulximg.com/image/740x493/gallery/1489010536_0c2e4f4f65e5cd3ed00869512a3d7e83.jpg/5994b67a50cc0d2ee587b573a8baa3ae/1489010536_3f1ba61d17ecae3e4441e632d60c2742.jpg',
         tracks: [
           {
-            trackId: 'https://www.youtube.com/embed/6eFcSesrP6A',
+            trackId: '6eFcSesrP6A',
             caption: 'tooo good man!',
             createdBy: users[2].id,
             comments: [
@@ -98,7 +98,7 @@ User
         image: 'https://static.vibe.com/files/2015/10/asap-ferg-640x640.jpg',
         tracks: [
           {
-            trackId: 'https://www.youtube.com/embed/meXPbvp3ldg',
+            trackId: 'meXPbvp3ldg',
             caption: 'flames!',
             createdBy: users[0].id,
             comments: [
@@ -114,7 +114,7 @@ User
         image: 'https://exclaim.ca//images/AmenArt.jpg',
         tracks: [
           {
-            trackId: 'https://www.youtube.com/embed/adDD43CvrUc',
+            trackId: 'adDD43CvrUc',
             caption: 'dope af',
             createdBy: users[2].id,
             comments: [

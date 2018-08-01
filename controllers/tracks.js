@@ -26,12 +26,11 @@ function createTrackRoute(req, res, next) {
       rapper.tracks.push(req.body);
       return rapper.save();
     })
-    .then(() => {
-      res.redirect('/rappers');
+    .then((rapper) => {
+      res.redirect(`/rappers/${rapper.id}`);
     })
     .catch(next);
 }
-// `/rappers/${rapper.id}`
 
 // <----delete track---->
 
